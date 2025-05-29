@@ -1,0 +1,4 @@
+#Thu May 29 10:44:06 SGT 2025
+base.0=C\:\\Users\\tyisc\\StudioProjects\\crosswordfromonline\\build\\app\\intermediates\\dex\\release\\minifyReleaseWithR8\\classes.dex
+path.0=classes.dex
+renamed.0=classes.dex
