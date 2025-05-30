@@ -16,8 +16,8 @@ class AppColors {
   static const Color appBarBackground = Color(
     0xFFFF8A65,
   ); // Colors.deepOrange[300]
-  static const Color timerText = Colors.white; // Colors.red[800]
-  static const Color wordListTitle = Color(0xFFFFE0B2); // Colors.brown[800]
+  static const Color timerText = Colors.white;
+  static const Color wordListTitle = Color(0xFFB71C1C); // Colors.red[900]
 
   static const Color hintBackground = Color(0xFFFFE0B2); // Colors.orange[100]
   static const Color foundHintBackground = Color(

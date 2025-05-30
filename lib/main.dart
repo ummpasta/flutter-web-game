@@ -226,22 +226,8 @@ class _GameSelectPageState extends State<GameSelectPage> {
                       style: AppButtonStyles.warmOrange,
                     ),
                   ),
-                  const SizedBox(height: 10),
-                  SizedBox(
-                    width: buttonWidth,
-                    child: ElevatedButton.icon(
-                      icon: const Icon(Icons.search),
-                      label: const Text("Spot the Scam"),
-                      onPressed: () {
-                        Navigator.of(
-                          context,
-                        ).push(_createFadeRouteToScamGame());
-                      },
-                      style: AppButtonStyles.warmOrange,
-                    ),
-                  ),
 
-                  const SizedBox(height: 20),
+                  const SizedBox(height: 10),
 
                   // --- Other Controls ---
                   Column(
