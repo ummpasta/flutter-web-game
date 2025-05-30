@@ -92844,7 +92844,6 @@ atC(a){var s=0,r=A.r(t.z),q
 var $async$Km=A.n(function(b,c){if(b===1)return A.o(c,r)
 while(true)switch(s){case 0:q=a.a
 switch(q){case"speak.onStart":break
-case"tts.init":break
 case"synth.onStart":break
 case"speak.onComplete":break
 case"synth.onComplete":break
@@ -92854,7 +92853,7 @@ case"speak.onCancel":break
 case"speak.onError":break
 case"speak.onProgress":break
 case"synth.onError":break
-default:A.xR("Unknowm method "+q)}return A.p(null,r)}})
+default:A.xR("Unknown method "+q)}return A.p(null,r)}})
 return A.q($async$Km,r)}}
 A.SX.prototype={
 Bh(a,b,c){return this.apI(a,b,c)},
