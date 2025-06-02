@@ -1,55 +1,20 @@
-Fraud|Be aware of ___ and deceptive practices
-Scam|Avoid ___ by staying informed
-Phishing|___ attempts often mimic trusted sources
-Identity|Protect your ___ from theft
-Spyware|___ can secretly collect your information
-Deception|___ is a common tactic in scams
-Con|___ artists exploit trust for personal gain
-Fraudulent|___ activities can look legitimate
-Rogue|___ apps may compromise your security
-Impersonation|___ scams involve fake identities
-Hacker|___ exploit system weaknesses
-Scammer|___ try to trick you into giving up data
-Scamware|___ is malicious software used by scammers
-Encryption|___ keeps your data safe
-Warning|Heed ___ signs of fraud
-Alert|Always stay ___ to suspicious behavior
-Secure|___ your personal and financial information
-Protection|Use ___ tools to stay scam-free
-Safe|Take steps to stay ___ online
-Verify|Always ___ the caller’s identity
-Authenticate|___ requests before responding
-Malware|___ can infect your device and steal data
-Blacklist|Use a ___ to block known threats
-Security|Good ___ habits help prevent fraud
-Risk|Understand the ___ before taking action
-Detect|___ scam signals early
-Block|___ unknown or untrusted contacts
-Phisher|___ disguise themselves to steal info
-Spoof|___ tricks you with fake sender identities
-Credential|Protect your login ___
-Vulnerability|Fix ___ in your systems
-Trust|___ but verify when in doubt
-Breach|A ___ means data has been exposed
-Attack|Cyber ___ can happen anytime
-Report|___ scams to the authorities
-Prevention|Scam ___ starts with awareness
-Investigation|___ suspicious messages carefully
-Scamproof|Take steps to be ___
-Alertness|___ helps you avoid traps
-Data|Secure your ___ from exposure
-Exposure|Avoid ___ of sensitive information
-Scamproofing|___ means protecting all fronts
-Skeptic|Be a ___ when something feels off
 Verification|___ prevents fraud
 Government|Scammers may pose as ___ officials
 Investment|Too-good-to-be-true ___ offers are risky
+Phishing|___ attempts often mimic trusted sources
 Banking|Always secure your ___ details
 Password|Never share your ___
 Suspicious|Avoid clicking on ___ links
+Impersonation|___ scams involve fake identities
 Overseas|___ calls can be scam-related
-Urgent|Scammers use ___ to pressure you
 Transfer|Be cautious of money ___ requests
-Scamshield|Use ___ tools to block scams
+ScamShield|Use ___ tools to block scams
 Hotline|Call the ___ to report a scam
+Report|___ scams to the authorities
 Police|Report scams to the ___
+Spoof|___ tricks you with fake sender identities
+Malware|___ can infect your device and steal data
+Scammer|___ try to trick you into giving up data
+Block|___ unknown or untrusted contacts
+Fraudulent|___ activities can look legitimate
+Alert|Always stay ___ to suspicious behavior

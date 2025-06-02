@@ -1,50 +1,20 @@
-Penipuan|Berhati-hati dengan ___ dan amalan menipu
-Percubaan pancingan data|___ sering meniru sumber yang dipercayai
-Identiti|Lindungi ___ anda daripada kecurian
-
-Con|___ artis mengeksploitasi kepercayaan untuk kepentingan peribadi
-Apl Rogue|___ mungkin menjejaskan keselamatan anda
-Penyamaran|___ penipuan melibatkan identiti palsu
-Penggodam|___ mengeksploitasi kelemahan sistem
-Scammer|___ cuba menipu anda supaya menyerahkan data
-Scamware|___ ialah perisian hasad yang digunakan oleh penipu
-Penyulitan|___ memastikan data anda selamat
-Amaran|Patuhi ___ tanda penipuan
-Makluman|Sentiasa kekal ___ kepada tingkah laku yang mencurigakan
-Lindungi|___ maklumat peribadi dan kewangan anda
-Perlindungan|Gunakan ___ alatan untuk kekal bebas penipuan
-Selamat|Ambil langkah untuk kekal ___ dalam talian
-Sahkan|Sentiasa ___ identiti pemanggil
-
-Keselamatan|Tabiat ___ yang baik membantu mencegah penipuan
-Risiko|Fahami ___ sebelum mengambil tindakan
-Kesan|___ isyarat penipuan awal
-Sekat|___ kenalan yang tidak diketahui atau tidak dipercayai
-Phisher|___ menyamar untuk mencuri maklumat
-Spoof|___ memperdayakan anda dengan identiti penghantar palsu
-
-Kerentanan|Betulkan ___ dalam sistem anda
-Percaya|___ tetapi sahkan apabila ragu-ragu
-Pelanggaran|A ___ bermakna data telah terdedah
-Serangan|Siber ___ boleh berlaku pada bila-bila masa
-Laporkan|___ penipuan kepada pihak berkuasa
-Pencegahan|Penipuan ___ bermula dengan kesedaran
-Siasatan|___ mesej yang mencurigakan dengan teliti
-Scamproof|Ambil langkah untuk menjadi ___
-Kewaspadaan|___ membantu anda mengelakkan perangkap
-Data|Lindungi ___ anda daripada pendedahan
-Pendedahan|Elakkan ___ maklumat sensitif
-Scamproofing|___ bermaksud melindungi semua bahagian
-Skeptik|Jadilah ___ apabila sesuatu terasa tidak menyenangkan
-Pengesahan|___ menghalang penipuan
-Kerajaan|Penipu boleh menyamar sebagai ___ pegawai
-Pelaburan|Terlalu-baik-untuk-benar ___ tawaran adalah berisiko
-Perbankan|Sentiasa selamatkan butiran ___ anda
-
-Meragukan|Elakkan mengklik pada ___ pautan
-Panggilan ke luar negara|___ boleh dikaitkan dengan penipuan
-Urgent|Scammer menggunakan ___ untuk menekan anda
-Pindahan|Berhati-hati dengan permintaan ___ wang
-Scamshield|Gunakan ___ alatan untuk menyekat penipuan
-
-Polis|Laporkan penipuan kepada ___
+Pengesahan | ___ menghalang penipuan
+Kerajaan | Penipu mungkin menyamar sebagai pegawai ___
+Pelaburan | Tawaran ___ yang terlalu baik untuk jadi kenyataan berisiko
+Pancingan | Cubaan ___ Data sering meniru sumber yang dipercayai
+Perbankan | Sentiasa lindungi maklumat ___ anda
+Laluan | Jangan sekali-kali berkongsi Kata ___ anda
+Mencurigakan | Elakkan mengklik pada pautan yang ___
+Peniruan | Penipuan ___ melibatkan identiti palsu
+Luar | Panggilan ___ Negara boleh jadi berkaitan dengan penipuan
+Pemindahan | Berhati-hati dengan permintaan ___ wang
+Perisai | Gunakan alat ___ Penipuan untuk menghalang penipuan
+Talian | Hubungi ___ Hotline untuk melaporkan penipuan
+Laporan | ___ penipuan kepada pihak berkuasa
+Polis | Laporkan penipuan kepada ___
+Penyamaran | ___ memperdaya anda dengan identiti penghantar palsu
+Hasad |Perisian ___ boleh menjangkiti peranti anda dan mencuri data
+Penipu | ___ cuba menipu anda untuk menyerahkan data
+Sekat | ___ kenalan yang tidak dikenali atau tidak dipercayai
+Penipuan | Aktiviti ___ boleh kelihatan sah
+Amaran | Sentiasa kekal ___ terhadap tingkah laku mencurigakan
