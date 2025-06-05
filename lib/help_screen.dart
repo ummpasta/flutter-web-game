@@ -1,7 +1,7 @@
+import 'package:audioplayers/audioplayers.dart';
 import 'package:chewie/chewie.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_translate/flutter_translate.dart';
-import 'package:just_audio/just_audio.dart';
 import 'package:video_player/video_player.dart';
 
 import 'app_styles.dart';
@@ -42,11 +42,10 @@ class _HelpScreenState extends State<_HelpScreen> {
   }
 
   Future<void> _playNarration() async {
-    final narrationPath = 'assets/audio/help_${widget.langCode}.mp3';
+    final narrationPath = 'audio/help_${widget.langCode}.mp3';
     try {
       await _narrationPlayer.stop();
-      await _narrationPlayer.setAsset(narrationPath);
-      await _narrationPlayer.play();
+      await _narrationPlayer.play(AssetSource(narrationPath));
     } catch (e) {
       debugPrint('Error playing narration: $e');
     }
@@ -71,7 +70,7 @@ class _HelpScreenState extends State<_HelpScreen> {
               children: [
                 Text(
                   translate('help_description'),
-                  style: AppTextStyles.settingsLabel, // 💡 Match settings label
+                  style: AppTextStyles.settingsLabel,
                   textAlign: TextAlign.center,
                 ),
                 const SizedBox(height: 20),

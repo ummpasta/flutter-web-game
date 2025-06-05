@@ -3,25 +3,9 @@ import 'dart:math';
 import 'package:audioplayers/audioplayers.dart';
 import 'package:flutter/material.dart';
 
-import 'game_settings.dart'; // Ensure you import your settings file
+import 'game_settings.dart';
 import 'win_screen.dart';
 
-// const SizedBox(height: 10),
-// SizedBox(
-//   width: buttonWidth,
-//   child: ElevatedButton(
-//     onPressed: () {
-//       Navigator.of(context).push(_createFadeRouteToScamGame());
-//     },
-//     style: ElevatedButton.styleFrom(
-//       backgroundColor: Colors.red[800],
-//       foregroundColor: Colors.white,
-//       padding: const EdgeInsets.symmetric(vertical: 20),
-//       textStyle: buttonTextStyle,
-//     ),
-//     child: const Text('Spot the Scam'),
-//   ),
-// ),
 class SpotTheScamPage extends StatefulWidget {
   final GameSettings settings;
 

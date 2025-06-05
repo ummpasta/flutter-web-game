@@ -1,12 +1,16 @@
 import 'dart:async';
+import 'dart:convert';
 import 'dart:math';
 
+import 'package:audioplayers/audioplayers.dart';
 import 'package:crossword/crossword.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_translate/flutter_translate.dart';
 import 'package:flutter_tts/flutter_tts.dart';
+import 'package:provider/provider.dart';
 
+import 'achievement_manager.dart';
 import 'app_styles.dart';
 import 'audio_manager.dart';
 import 'game_settings.dart';
@@ -43,6 +47,7 @@ class _GamePageState extends State<GamePage> {
   int numRows = 0;
   int numColumns = 0;
   final FlutterTts flutterTts = FlutterTts();
+  final AudioPlayer _audioPlayer = AudioPlayer();
   Map<String, String> wordMessages = {};
 
   @override
@@ -89,7 +94,7 @@ class _GamePageState extends State<GamePage> {
   Future<List<String>> loadWords() async {
     final langCode = widget.settings.language;
     final wordFile = await rootBundle.loadString(
-      'assets/word lists/word_list_$langCode.txt',
+      'assets/word_lists/word_list_$langCode.txt',
     );
     final lines = wordFile.split('\n');
     wordMessages.clear();
@@ -117,11 +122,11 @@ class _GamePageState extends State<GamePage> {
 
   String getAlphabetForLanguage(String languageCode) {
     switch (languageCode.toLowerCase()) {
-      case 'ta':
+      case 'taa':
         return 'அஆஇஈஉஊஎஏஐஒஓஔகஙசஞடணதநபமயரலவழளறன';
-      case 'zh':
+      case 'zha':
         return '的一是在不了有和人这中大为上个国我以要他时来用们生到作地于出就分对成会可主发年动同工也能下过子说产种面而方后多定行学法所民得经十三之进着等部度家电力里如水化高自二理起小物现实加量都两体制机当使点从业本去把性好应开它合还因由其些然前外天政四日那社义事平形相全表间样与关各重新线内数正心反你明看原又么利比或但质气第向道命此变条只没结解问意建月公无系军很情者最立代想已通并提直题党程展五果料象员革位入常文总次品式活设及管特件长求老头基资边流路级少图山统接知较将组见计别她手角期根论运农指几九区强放决西被干做必战先回则任取据处队南给色光门即保治北造百规热领七海口东导器压志世金增争济阶油思术极交受联什认六共权收证改清已';
-      case 'ms':
+      case 'msa':
         return 'ABCDEFGHIJKLMNOPQRSTUVWXYZ';
       default:
         return 'ABCDEFGHIJKLMNOPQRSTUVWXYZ';
@@ -234,6 +239,16 @@ class _GamePageState extends State<GamePage> {
 
   void checkIfWon() {
     if (selectedWords.length == validWords.length) {
+      Provider.of<AchievementManager>(
+        context,
+        listen: false,
+      ).unlock('First Victory!');
+      if (selectedWords.length == validWords.length) {
+        Provider.of<AchievementManager>(
+          context,
+          listen: false,
+        ).unlock('Perfect Player');
+      }
       WinScreenHelper.handleWin(
         context: context,
         timeTaken: _secondsPassed,
@@ -252,6 +267,7 @@ class _GamePageState extends State<GamePage> {
     if (_isTimerRunning) _timer.cancel();
     _audioManager.dispose();
     flutterTts.stop();
+    _audioPlayer.dispose();
     super.dispose();
   }
 
@@ -274,9 +290,79 @@ class _GamePageState extends State<GamePage> {
   }
 
   Future<void> _speakHint(String hintText) async {
-    final languageCode = widget.settings.language;
+    final languageCode = widget.settings.language.toLowerCase();
     final cleanedHint = _prepareHintForTTS(hintText, languageCode);
 
+    String? assetPath;
+
+    if (languageCode == 'ta') {
+      // Tamil: use MD5-hash based mapping file
+      final mappingJson = await rootBundle.loadString(
+        'assets/tts_ta/tts_mapping.json',
+      );
+      final Map<String, dynamic> mapping = json.decode(mappingJson);
+      final mappedFile = mapping[hintText.replaceAll('___', 'வெற்றிடம்')];
+      if (mappedFile != null) {
+        assetPath = 'assets/tts_ta/$mappedFile';
+      }
+    } else {
+      // Other languages: fallback to normalized filenames
+      String? normalized;
+      String? assetDir;
+
+      switch (languageCode) {
+        case 'en':
+          normalized = hintText
+              .replaceAll('___', 'Blank')
+              .toUpperCase()
+              .replaceAll(RegExp(r'[^A-Z0-9]'), '_')
+              .replaceAll(RegExp(r'_+'), '_')
+              .replaceAll(RegExp(r'^_|_$'), '');
+          assetDir = 'tts_en';
+          break;
+
+        case 'zh':
+          normalized = hintText
+              .replaceAll('___', '某个词')
+              .replaceAll(RegExp(r'[^\u4e00-\u9fa5A-Z0-9_]'), '')
+              .replaceAll(RegExp(r'_+'), '_')
+              .replaceAll(RegExp(r'^_|_$'), '');
+          assetDir = 'tts_zh';
+          break;
+
+        case 'ms':
+          normalized = hintText
+              .replaceAll('___', 'Kosong')
+              .toUpperCase()
+              .replaceAll(RegExp(r'[^A-Z0-9]'), '_')
+              .replaceAll(RegExp(r'_+'), '_')
+              .replaceAll(RegExp(r'^_|_$'), '');
+          assetDir = 'tts_ms';
+          break;
+      }
+
+      if (normalized != null && assetDir != null) {
+        assetPath = 'assets/$assetDir/$normalized.mp3';
+      }
+    }
+
+    // Try to play asset
+    if (assetPath != null) {
+      try {
+        await rootBundle.load(assetPath); // Confirm asset exists
+        await _audioPlayer.stop();
+        await _audioPlayer.play(
+          AssetSource(assetPath.replaceFirst('assets/', '')),
+        );
+        return;
+      } catch (e) {
+        debugPrint(
+          "Manual MP3 not found for [$languageCode] hint '$hintText'. Falling back to TTS.",
+        );
+      }
+    }
+
+    // Fallback to built-in TTS
     final ttsLangMap = {
       'en': 'en-US',
       'zh': 'zh-CN',
@@ -333,12 +419,9 @@ class _GamePageState extends State<GamePage> {
                 ),
               ),
             ),
-
             Center(
               child: Container(
-                padding: const EdgeInsets.all(
-                  4,
-                ), // smaller padding around all hints
+                padding: const EdgeInsets.all(4),
                 margin: const EdgeInsets.symmetric(horizontal: 4, vertical: 4),
                 decoration: BoxDecoration(
                   color: AppColors.hintBackground,
@@ -377,31 +460,39 @@ class _GamePageState extends State<GamePage> {
                               width: 1.5,
                             ),
                           ),
-                          child: GestureDetector(
-                            onTap: () => _speakHint(displayedMessage),
-                            child: AnimatedSwitcher(
-                              duration: const Duration(milliseconds: 500),
-                              transitionBuilder:
-                                  (child, animation) => FadeTransition(
-                                    opacity: animation,
-                                    child: child,
+                          child: Row(
+                            mainAxisSize: MainAxisSize.min,
+                            children: [
+                              AnimatedSwitcher(
+                                duration: const Duration(milliseconds: 500),
+                                transitionBuilder:
+                                    (child, animation) => FadeTransition(
+                                      opacity: animation,
+                                      child: child,
+                                    ),
+                                child: GestureDetector(
+                                  onTap: () => _speakHint(displayedMessage),
+                                  child: Text(
+                                    displayedMessage,
+                                    key: ValueKey<bool>(isFound),
+                                    style:
+                                        isFound
+                                            ? AppTextStyles.hintTextFound
+                                                .copyWith(
+                                                  fontSize:
+                                                      crosswordFontSize * 0.8,
+                                                  color:
+                                                      AppColors.foundHintText,
+                                                )
+                                            : AppTextStyles.hintText.copyWith(
+                                              fontSize: crosswordFontSize * 0.8,
+                                              color: AppColors.unfoundHintText,
+                                            ),
+                                    textAlign: TextAlign.center,
                                   ),
-                              child: Text(
-                                displayedMessage,
-                                key: ValueKey<bool>(isFound),
-                                style:
-                                    isFound
-                                        ? AppTextStyles.hintTextFound.copyWith(
-                                          fontSize: crosswordFontSize * 0.8,
-                                          color: AppColors.foundHintText,
-                                        )
-                                        : AppTextStyles.hintText.copyWith(
-                                          fontSize: crosswordFontSize * 0.8,
-                                          color: AppColors.unfoundHintText,
-                                        ),
-                                textAlign: TextAlign.center,
+                                ),
                               ),
-                            ),
+                            ],
                           ),
                         );
                       }).toList(),

@@ -1,9 +1,12 @@
 import 'dart:async';
 import 'dart:convert';
 
+import 'package:flutter/foundation.dart' show kIsWeb;
 import 'package:flutter/material.dart';
 import 'package:flutter_translate/flutter_translate.dart';
 import 'package:shared_preferences/shared_preferences.dart';
+// For web-only import
+import 'package:web/web.dart' as web;
 
 class LeaderboardEntry {
   final String name;
@@ -34,25 +37,48 @@ class LeaderboardStorage {
   static const _key = 'leaderboard_entries';
 
   static Future<List<LeaderboardEntry>> loadEntries() async {
-    final prefs = await SharedPreferences.getInstance();
-    final jsonString = prefs.getString(_key);
+    final jsonString = await _getValue(_key);
     if (jsonString == null) return [];
-
     final List<dynamic> decoded = json.decode(jsonString);
     return decoded.map((e) => LeaderboardEntry.fromMap(e)).toList();
   }
 
   static Future<void> saveEntry(LeaderboardEntry entry) async {
-    final prefs = await SharedPreferences.getInstance();
     final current = await loadEntries();
     current.add(entry);
     final jsonString = json.encode(current.map((e) => e.toMap()).toList());
-    await prefs.setString(_key, jsonString);
+    await _setValue(_key, jsonString);
   }
 
   static Future<void> clearLeaderboard() async {
-    final prefs = await SharedPreferences.getInstance();
-    await prefs.remove(_key);
+    await _removeValue(_key);
+  }
+
+  static Future<String?> _getValue(String key) async {
+    if (kIsWeb) {
+      return web.window.localStorage[key];
+    } else {
+      final prefs = await SharedPreferences.getInstance();
+      return prefs.getString(key);
+    }
+  }
+
+  static Future<void> _setValue(String key, String value) async {
+    if (kIsWeb) {
+      web.window.localStorage[key] = value;
+    } else {
+      final prefs = await SharedPreferences.getInstance();
+      await prefs.setString(key, value);
+    }
+  }
+
+  static Future<void> _removeValue(String key) async {
+    if (kIsWeb) {
+      web.window.localStorage.removeItem(key);
+    } else {
+      final prefs = await SharedPreferences.getInstance();
+      await prefs.remove(key);
+    }
   }
 }
 

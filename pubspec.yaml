@@ -31,23 +31,23 @@ dependencies:
   flutter:
     sdk: flutter
   shared_preferences: ^2.2.2
-
-  # The following adds the Cupertino Icons font to your application.
-  # Use with the CupertinoIcons class for iOS style icons.
   cupertino_icons: ^1.0.8
   crossword: ^1.3.2
-  flutter_translate: ^3.0.0
+  flutter_translate: ^3.1.0
   flutter_localizations:
     sdk: flutter
+  audioplayers: ^6.4.0
+  flutter_tts: ^4.2.2
+  provider: ^6.0.5
+  web: ^0.5.1
 
 dev_dependencies:
   flutter_test:
     sdk: flutter
   chewie: ^1.7.1
   video_player: ^2.7.0
-  audioplayers: ^5.2.1
-  just_audio: ^0.9.36
-  flutter_tts: ^3.8.5
+
+
   # The "flutter_lints" package below contains a set of recommended lints to
   # encourage good coding practices. The lint set provided by the package is
   # activated in the `analysis_options.yaml` file located at the root of your
@@ -61,12 +61,16 @@ dev_dependencies:
 # The following section is specific to Flutter packages.
 flutter:
   assets:
-    - assets/word lists/
+    - assets/word_lists/
     - assets/audio/
     - assets/video/
     - assets/i18n/
     - assets/scams/
     - assets/legits/
+    - assets/tts_en/
+    - assets/tts_zh/
+    - assets/tts_ms/
+    - assets/tts_ta/
 
   # The following line ensures that the Material Icons font is
   # included with your application, so that you can use the icons in

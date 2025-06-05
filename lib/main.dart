@@ -2,10 +2,12 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:flutter_translate/flutter_translate.dart';
+import 'package:provider/provider.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 import 'Scammable.dart';
 import 'Spot_The_Scam.dart';
+import 'achievement_manager.dart';
 import 'app_styles.dart';
 import 'game_settings.dart';
 import 'help_screen.dart';
@@ -13,13 +15,22 @@ import 'help_screen.dart';
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   SystemChrome.setEnabledSystemUIMode(SystemUiMode.immersiveSticky);
+
   final delegate = await LocalizationDelegate.create(
     fallbackLocale: 'en',
     supportedLocales: ['en', 'zh', 'ms', 'ta'],
     basePath: 'assets/i18n',
   );
 
-  runApp(LocalizedApp(delegate, const MyApp()));
+  runApp(
+    LocalizedApp(
+      delegate,
+      ChangeNotifierProvider(
+        create: (_) => AchievementManager(),
+        child: const MyApp(),
+      ),
+    ),
+  );
 }
 
 class MyApp extends StatelessWidget {
@@ -227,6 +238,20 @@ class _GameSelectPageState extends State<GameSelectPage> {
                     ),
                   ),
 
+                  // const SizedBox(height: 10),
+                  // SizedBox(
+                  //   width: buttonWidth,
+                  //   child: ElevatedButton.icon(
+                  //     icon: const Icon(Icons.search),
+                  //     label: const Text("Spot the Scam"),
+                  //     onPressed: () {
+                  //       Navigator.of(
+                  //         context,
+                  //       ).push(_createFadeRouteToScamGame());
+                  //     },
+                  //     style: AppButtonStyles.warmOrange,
+                  //   ),
+                  // ),
                   const SizedBox(height: 10),
 
                   // --- Other Controls ---
@@ -260,6 +285,22 @@ class _GameSelectPageState extends State<GameSelectPage> {
                           label: Text(translate('change_language')),
                           style: AppButtonStyles.warmOrange,
                           onPressed: _showLanguageDialog,
+                        ),
+                      ),
+                      const SizedBox(height: 10),
+                      SizedBox(
+                        width: buttonWidth,
+                        child: ElevatedButton.icon(
+                          icon: const Icon(Icons.emoji_events),
+                          label: const Text("Achievements"),
+                          style: AppButtonStyles.warmOrange,
+                          onPressed: () {
+                            Navigator.of(context).push(
+                              MaterialPageRoute(
+                                builder: (context) => AchievementsPage(),
+                              ),
+                            );
+                          },
                         ),
                       ),
                     ],
