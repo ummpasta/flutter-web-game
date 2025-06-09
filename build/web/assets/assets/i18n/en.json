@@ -1,6 +1,6 @@
 {
   "welcome_title": "Senior's Anti-Scam Games",
-  "start_game": "Start Crossword",
+  "start_game": "Start Word Find",
   "settings": "Settings",
   "help": "Help",
   "change_language": "Change Language",
@@ -16,7 +16,7 @@
   "settings.music_volume": "Music Volume",
   "settings.word_popups": "Enable Word Popups",
   "settings.apply": "Apply",
-  "game.title": "Crossword",
+  "game.title": "Word Find",
   "timer.label": "Time",
   "hints.label": "Hints",
   "you_win": "You Win!",
