@@ -3,7 +3,7 @@ import 'dart:math';
 import 'package:audioplayers/audioplayers.dart';
 import 'package:flutter/foundation.dart';
 
-import 'game_settings.dart'; // adjust if needed
+import '../game_settings.dart'; // adjust if needed
 
 class AudioManager {
   final GameSettings settings;

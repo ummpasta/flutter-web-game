@@ -1,4 +1,4 @@
-// service_worker_cleanup.dart
+// service_worker_cleanup_web.dart
 import 'dart:html' as html;
 
 Future<void> unregisterServiceWorkers() async {
