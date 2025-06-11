@@ -8310,7 +8310,7 @@ aYs(a){var s=0,r=A.y(t.wE),q,p=2,o=[],n,m,l,k,j,i
 var $async$Pg=A.u(function(b,c){if(b===1){o.push(c)
 s=p}while(true)switch(s){case 0:p=4
 s=7
-return A.B(A.aRd(A.fJ("http://172.31.89.153/api/leaderboard/"+a,0,null)),$async$Pg)
+return A.B(A.aRd(A.fJ("https://mysupercrossword.duckdns.org/api/leaderboard/"+a,0,null)),$async$Pg)
 case 7:n=c
 if(n.b===200){k=n
 m=B.b6.eg(0,A.b5X(A.b3k(k.e)).eg(0,k.w))
@@ -8341,7 +8341,7 @@ agk(a){return A.aYt(a)},
 aYt(a){var s=0,r=A.y(t.H),q=1,p=[],o,n,m,l,k,j,i
 var $async$agk=A.u(function(b,c){if(b===1){p.push(c)
 s=q}while(true)switch(s){case 0:q=3
-m=A.fJ("http://172.31.89.153/api/leaderboard",0,null)
+m=A.fJ("https://mysupercrossword.duckdns.org/api/leaderboard",0,null)
 l=t.N
 k=A.az(["Content-Type","application/json"],l,l)
 s=6
